@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: Figtree;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.gradient {
+  position: absolute;
+  width: max(100vw, 512px);
+  height: max(100vw, 512px);
+  top: calc(256px - calc(max(100vw, 512px) / 2));
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 256px;
+  width: 100%;
+  justify-content: center;
+  color: #fff;
+}
+
+main {
+  max-width: 768px;
+  padding: 16px;
+  position: relative;
+  overflow: visible;
+}
+
+hgroup * {
+  margin: 0;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 28px;
+}
+
+hgroup p {
+  text-align: right;
+  margin-top: -12px;
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+main > ul {
+  padding: 16px 0;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+main > ul > li {
+  flex-grow: 1;
+}
+
+li > ul {
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
+
+li > ul > li {
+  padding: 8px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.color-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.num {
+  font-weight: 600;
+}
+
+select[value='100'] + ul .color-50,
+select[value='100'] + ul .color-25,
+select[value='100'] + ul .color-75 {
+  display: none;
+}
+
+select[value='50'] + ul .color-25,
+select[value='50'] + ul .color-75 {
+  display: none;
+}
