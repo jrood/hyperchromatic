@@ -53,7 +53,7 @@ export const page = () =>
           </p>
           <p>
             This palette provides a curated selection of OKLCH colors that
-            utilize the P3 space without going beyond it. The shades of
+            use the P3 space without going beyond it. The shades of
             lightness follow curves that are calibrated for each hue in order to
             include vivid colors without sacrificing uniformity of lightness
             between hues.
