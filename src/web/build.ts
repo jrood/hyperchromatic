@@ -8,6 +8,6 @@ distDirInit('web');
 console.log(colors);
 
 Deno.writeTextFileSync(
-  'dist/web/web.html',
+  'dist/web/index.html',
   await minify(page(), { removeAttributeQuotes: true}),
 );
