@@ -21,6 +21,7 @@ export const Styles = () => (
     {minify(`
       @font-face {
         font-family: Figtree;
+        font-weight: 400 600;
         src: url('data:font/woff2;base64,${b64Figtree()}') format('woff2');
       }
       ${Deno.readTextFileSync('src/web/styles/styles.css')}
