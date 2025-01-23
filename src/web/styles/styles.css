@@ -104,7 +104,7 @@ input[type='checkbox'] {
   width: 20px;
   height: 20px;
   margin: 0 0 0 4px;
-  transform: translateY(4px)
+  transform: translateY(4px);
 }
 
 ul li.color-25,
@@ -123,6 +123,8 @@ ul li.color-75 {
 
 .code {
   display: none;
+  min-width: 168px;
+  text-align: right;
 }
 #show-codes:checked ~ ul .code {
   display: inline;
@@ -130,6 +132,16 @@ ul li.color-75 {
 
 .types {
   display: flex;
+}
+
+#show-codes:checked ~ ul .types {
+  flex-direction: column;
+}
+
+@media (min-width: 698px) {
+  #show-codes:checked ~ ul .types {
+    flex-direction: row;
+  }
 }
 
 footer {
