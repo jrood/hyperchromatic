@@ -28,8 +28,8 @@ export const page = () =>
         </header>
         <main>
           <p>
-            Hyperchromatic is an open source palette using OKLCH colors in
-            the P3 color space.
+            Hyperchromatic is an open source palette using OKLCH colors in the
+            P3 color space.
           </p>
           <h2>What's P3?</h2>
           <p>
@@ -42,13 +42,6 @@ export const page = () =>
           <p>
             OKLCH can be used in CSS to specify colors using lightness, chroma,
             and hue. These colors might fall in sRGB, P3, or even wider spaces.
-          </p>
-          <h2>Why is this palette useful?</h2>
-          <p>
-            With OKLCH, it's easy to accidentally choose colors beyond P3. A
-            certain lightness and chroma may be within P3 range for one hue but
-            out of P3 range for another. The curated selection of OKLCH colors
-            in this palette use the P3 space without going beyond it.
           </p>
           <h2>Convention</h2>
           <p>
@@ -68,7 +61,7 @@ export const page = () =>
           <h2>The math</h2> */}
         </main>
         <footer>
-          Created by <a href="https://github.com/jrood">John Rood</a>
+          Created by <a href='https://github.com/jrood'>John Rood</a>
         </footer>
       </body>
     </html>
