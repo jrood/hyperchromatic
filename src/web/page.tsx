@@ -43,7 +43,7 @@ export const page = () =>
             OKLCH can be used in CSS to specify colors using lightness, chroma,
             and hue. These colors might fall in sRGB, P3, or even wider spaces.
           </p>
-          <h2>What is this palette useful?</h2>
+          <h2>Why is this palette useful?</h2>
           <p>
             With OKLCH, it's easy to accidentally choose colors beyond P3. A
             certain lightness and chroma may be within P3 range for one hue but
