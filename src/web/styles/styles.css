@@ -61,7 +61,7 @@ ul {
 main > ul {
   padding: 16px 0;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 16px;
 }
 
 main > ul > li {
