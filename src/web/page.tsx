@@ -1,7 +1,7 @@
 import { ColorList } from './ColorList.tsx';
 import { Styles } from './styles/Styles.tsx';
 
-export const description = 'vibrant colors for modern displays';
+export const description = 'colors for modern displays';
 
 export const page = () =>
   '<!doctype html>' +
@@ -28,7 +28,7 @@ export const page = () =>
         </header>
         <main>
           <p>
-            Hyperchromatic is an open source color palette using OKLCH colors in
+            Hyperchromatic is an open source palette using OKLCH colors in
             the P3 color space.
           </p>
           <h2>What's P3?</h2>
