@@ -9,19 +9,19 @@ body {
 
 .gradient {
   position: absolute;
-  width: max(100vw, 512px);
-  height: max(100vw, 512px);
-  top: calc(256px - calc(max(100vw, 512px) / 2));
+  width: 100vw;
+  height: 100vw;
+  top: calc(min(256px, 50vw) - 50vw);
   z-index: -1;
 }
 
 header {
   display: flex;
   align-items: center;
-  height: 256px;
-  width: 100%;
+  height: min(256px, 50vw);
   justify-content: center;
   color: #fff;
+  padding-right: 4px;
 }
 
 main {
@@ -36,7 +36,8 @@ hgroup * {
 }
 
 h1 {
-  font-size: 64px;
+  font-size: min(64px, 12.5vw);
+  line-height: calc(1em + 12px);
   font-weight: 600;
 }
 
