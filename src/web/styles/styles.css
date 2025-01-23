@@ -68,7 +68,7 @@ main > ul > li {
   flex-grow: 1;
 }
 
-li > ul {
+.types > ul {
   flex-direction: column;
 }
 
@@ -76,13 +76,12 @@ li {
   list-style: none;
 }
 
-li > ul > li {
+.types > ul > li {
   padding: 8px;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
 }
-
 
 .color-label {
   font-weight: 600;
@@ -93,13 +92,42 @@ li > ul > li {
   font-weight: 600;
 }
 
-select[value='100'] + ul .color-50,
-select[value='100'] + ul .color-25,
-select[value='100'] + ul .color-75 {
-  display: none;
+select {
+  font-family: inherit;
+  font-size: inherit;
+  height: 32px;
+  margin: 0 0 0 4px;
+  margin-right: 16px;
 }
 
-select[value='50'] + ul .color-25,
-select[value='50'] + ul .color-75 {
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  margin: 0 0 0 4px;
+  transform: translateY(4px)
+}
+
+ul li.color-25,
+ul li.color-50,
+ul li.color-75 {
   display: none;
+}
+#inc-by[value='50'] ~ ul li.color-50 {
+  display: flex;
+}
+#inc-by[value='25'] ~ ul li.color-25,
+#inc-by[value='25'] ~ ul li.color-50,
+#inc-by[value='25'] ~ ul li.color-75 {
+  display: flex;
+}
+
+.code {
+  display: none;
+}
+#show-codes:checked ~ ul .code {
+  display: inline;
+}
+
+.types {
+  display: flex;
 }

@@ -6,7 +6,8 @@ distDirInit('colors');
 import { hues } from './hues.ts';
 import { maxC, maxL, peakSearchMax } from './utils.ts';
 
-export const colors: Record<string, Record<number, string>> = {};
+type Color = { l: number; c: number; h: number };
+export const colors: Record<string, Record<string, Color>> = {};
 
 const floor = (n: number, p: number) => Math.floor(n * p) / p;
 
@@ -35,7 +36,20 @@ for (const k in hues) {
     const l =
       (1 - _i + Math.asin(Math.sin(_i * Math.PI) * l_adj) / Math.PI) * 75 + 25;
     const c = maxC(l, h);
-    colors[k][i] = `oklch(${floor(l, 100)}% ${floor(c, 1000)} ${h})`;
+    colors[k]['V' + i] = { l: floor(l, 100), c: floor(c, 1000), h };
+  }
+}
+
+for (let i = 25; i < 1000; i += 25) {
+  let minC = 1;
+  for (const k in colors) {
+    const v = colors[k]['V' + i];
+    minC = Math.min(minC, v.c);
+  }
+  for (const k in colors) {
+    const v = colors[k]['V' + i];
+    colors[k]['E' + i] = { l: v.l, c: minC, h: v.h };
+    colors[k]['M' + i] = { l: v.l, c: floor(minC / 2, 1000), h: v.h };
   }
 }
 

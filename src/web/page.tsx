@@ -43,20 +43,23 @@ export const page = () =>
             OKLCH can be used in CSS to specify colors using lightness, chroma,
             and hue. These colors might fall in sRGB, P3, or even wider spaces.
           </p>
-          <h2>What makes this palette useful?</h2>
+          <h2>What is this palette useful?</h2>
           <p>
-            With OKLCH, it is easy to accidentally choose colors that are beyond
-            P3. When trying to use vivid colors, a certain lightness and chroma
-            may be within P3 range for one hue but out of P3 range for a
-            different hue. This can cause colors to look non-uniform or diplay
-            differently than intended.
+            With OKLCH, it's easy to accidentally choose colors beyond P3. A
+            certain lightness and chroma may be within P3 range for one hue but
+            out of P3 range for another. The curated selection of OKLCH colors
+            in this palette use the P3 space without going beyond it.
+          </p>
+          <h2>Convention</h2>
+          <p>
+            <strong>V</strong> colors use the maximum choma possible.{' '}
           </p>
           <p>
-            This palette provides a curated selection of OKLCH colors that
-            use the P3 space without going beyond it. The shades of
-            lightness follow curves that are calibrated for each hue in order to
-            include vivid colors without sacrificing uniformity of lightness
-            between hues.
+            <strong>E</strong> colors use equal chroma for consistancy across
+            hues.
+          </p>
+          <p>
+            <strong>M</strong> colors are muted.
           </p>
           <ColorList />
           {/* <h2>How will these colors look on displays that don't support P3?</h2>
