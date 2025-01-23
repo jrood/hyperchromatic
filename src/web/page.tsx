@@ -67,6 +67,9 @@ export const page = () =>
           <label for='show-fallbacks'>Show sRGB fallbacks</label>
           <h2>The math</h2> */}
         </main>
+        <footer>
+          Created by <a href="https://github.com/jrood">John Rood</a>
+        </footer>
       </body>
     </html>
   ).value;

@@ -131,3 +131,12 @@ ul li.color-75 {
 .types {
   display: flex;
 }
+
+footer {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+a {
+  color: #000;
+}
