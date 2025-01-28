@@ -31,29 +31,26 @@ export const page = () =>
             Hyperchromatic is an open source palette using OKLCH colors in the
             P3 color space.
           </p>
-          <h2>What's P3?</h2>
-          <p>
-            P3 is a "color space" or range of colors that a display can show.
-            Many modern displays support P3 but older displays only support the
-            smaller sRGB space. Colors in CSS using hex or rgb are limited to
-            the sRGB space.
-          </p>
-          <h2>What's OKLCH?</h2>
-          <p>
-            OKLCH can be used in CSS to specify colors using lightness, chroma,
-            and hue. These colors might fall in sRGB, P3, or even wider spaces.
-          </p>
-          <h2>Convention</h2>
-          <p>
-            <strong>V</strong> colors use the maximum choma possible.{' '}
-          </p>
-          <p>
-            <strong>E</strong> colors use equal chroma for consistancy across
-            hues.
-          </p>
-          <p>
-            <strong>M</strong> colors are muted.
-          </p>
+          <div class="flex-p">
+            <div>
+              <h2>What's P3?</h2>
+              <p>
+                P3 is a "color space" or range of colors that a display can
+                show. Many modern displays support P3 but older displays only
+                support the smaller sRGB space. Colors in CSS using hex or rgb
+                are limited to the sRGB space.
+              </p>
+            </div>
+            <div>
+              <h2>What's OKLCH?</h2>
+              <p>
+                OKLCH can be used in CSS to specify colors using lightness,
+                chroma, and hue. These colors might fall in sRGB, P3, or even
+                wider spaces.
+              </p>
+            </div>
+          </div>
+
           <ColorList />
           {/* <h2>How will these colors look on displays that don't support P3?</h2>
           <input id='show-fallbacks' type='checkbox' />

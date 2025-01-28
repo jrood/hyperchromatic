@@ -1,24 +1,20 @@
 import { colors } from '../../../dist/colors/colors.ts';
 import { oklch } from '../oklch.ts';
 
+const n = 8;
+
 const gradientColors = [
-  `#fff ${50 - 3 - 5.5 - 5 - 4.5 - 4 - 3.5 - 3 - 2.5}%`,
-  oklch(colors.yellow.V50) + ` ${50 - 3 - 5.5 - 5 - 4.5 - 4 - 3.5 - 3}%`,
-  oklch(colors.yellow.V300) + ` ${50 - 3 - 5.5 - 5 - 4.5 - 4 - 3.5}%`,
-  oklch(colors.orange.V400) + ` ${50 - 3 - 5.5 - 5 - 4.5 - 4}%`,
-  oklch(colors.red.V500) + ` ${50 - 3 - 5.5 - 5 - 4.5}%`,
-  oklch(colors.magenta.V500) + ` ${50 - 3 - 5.5 - 5}%`,
-  oklch(colors.pink.V525) + ` ${50 - 3 - 5.5}%`,
-  oklch(colors.purple.V550) + ` ${50 - 3}%`,
-  oklch(colors.indigo.V550) + ` ${50 + 3}%`,
-  oklch(colors.blue.V525) + ` ${50 + 3 + 5.5}%`,
-  oklch(colors.sky.V500) + ` ${50 + 3 + 5.5 + 5}%`,
-  oklch(colors.aqua.V500) + ` ${50 + 3 + 5.5 + 5 + 4.5}%`,
-  oklch(colors.green.V400) + ` ${50 + 3 + 5.5 + 5 + 4.5 + 4}%`,
-  oklch(colors.lime.V300) + ` ${50 + 3 + 5.5 + 5 + 4.5 + 4 + 3.5}%`,
-  oklch(colors.lime.V50) + ` ${50 + 3 + 5.5 + 5 + 4.5 + 4 + 3.5 + 3}%`,
-  `#fff ${50 + 3 + 5.5 + 5 + 4.5 + 4 + 3.5 + 3 + 2.5}%`,
+  `#fff ${50 - n * 4.5}%`,
+  oklch(colors.yellow[100]) + ` ${50 - n * 3.5}%`,
+  oklch(colors.yellow[500]) + ` ${50 - n * 2.5}%`,
+  oklch(colors.orange[500]) + ` ${50 - n * 1.5}%`,
+  oklch(colors.red[500]) + ` ${50 - n * .5}%`,
+  oklch(colors.purple[500]) + ` ${50 + n * .5}%`,
+  oklch(colors.blue[500]) + ` ${50 + n * 1.5}%`,
+  oklch(colors.green[500]) + ` ${50 + n * 2.5}%`,
+  oklch(colors.green[100]) + ` ${50 + n * 3.5}%`,
+  `#fff ${50 + n * 4.5}%`,
 ];
 
 export const gradient = () =>
-  `conic-gradient(from 180deg in oklch,${gradientColors.join(',')})`;
+  `conic-gradient(from 180deg in oklab,${gradientColors.join(',')})`;

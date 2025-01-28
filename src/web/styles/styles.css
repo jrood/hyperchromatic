@@ -122,26 +122,12 @@ ul li.color-75 {
 }
 
 .code {
-  display: none;
   min-width: 168px;
   text-align: right;
-}
-#show-codes:checked ~ ul .code {
-  display: inline;
 }
 
 .types {
   display: flex;
-}
-
-#show-codes:checked ~ ul .types {
-  flex-direction: column;
-}
-
-@media (min-width: 698px) {
-  #show-codes:checked ~ ul .types {
-    flex-direction: row;
-  }
 }
 
 footer {
@@ -151,4 +137,12 @@ footer {
 
 a {
   color: #000;
+}
+
+.flex-p {
+  display: flex;
+}
+
+.flex-p > * {
+  width: 50%;
 }
