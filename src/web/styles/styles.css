@@ -141,8 +141,11 @@ a {
 
 .flex-p {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.flex-p > * {
-  width: 50%;
+@media (min-width: 512px) {
+  .flex-p > * {
+    width: 50%;
+  }
 }
