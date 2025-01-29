@@ -21,14 +21,13 @@ for (const k in hues) {
   // const t = 1.2 - Math.round(maxL(h) / 10) / 10;
   const t = .5;
 
-  
-
   let x = peakSearchMax({
-    low: -.99,
+    low: -.843184,
     high: 1,
     precisions: [1, 0.1, 0.01, 0.001],
     fn: (n: number) => {
-      const l = (1 - t + Math.asin(Math.sin(t * Math.PI) )* n / Math.PI) ** .5 * 100;
+      const adj = Math.asin(Math.sin(t * Math.PI)) * n / Math.PI;
+      const l = ((1 - t) ** .5 + adj) * 100;
       return maxC(l, h);
     },
   });
@@ -41,11 +40,11 @@ for (const k in hues) {
   // if (k === 'green') {
   //   x = .25;
   // }
-  
 
   for (let i = 25; i < 1000; i += 25) {
     const j = i / 1000;
-    const l = (1 - j + Math.asin(Math.sin(j * Math.PI) )* x / Math.PI) ** .5 *
+    const adj = Math.asin(Math.sin(j * Math.PI)) * x / Math.PI;
+    const l = ((1 - j) ** .5 + adj) *
       100;
     // const l = (1 - _i)**(2/5) * 100;
     let c = maxC(l, h);
@@ -53,7 +52,6 @@ for (const k in hues) {
       c = Math.min(c, (i / 1000) ** 1.5);
     }
     colors[k][i] = { l: floor(l, 100), c: floor(c, 1000), h };
-    
   }
 }
 
