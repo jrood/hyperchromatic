@@ -21,13 +21,21 @@ for (const k in hues) {
   // const t = 1.2 - Math.round(maxL(h) / 10) / 10;
   const t = .5;
 
+  const z = 1.25;
+
+  const rnd = (x: number) => Math.round(x * 1000000) / 1000000;
+
+  const safePow = (a: number, b: number) => {
+    return a > 0 ? a ** b : -((-a) ** b);
+  };
+
   let x = peakSearchMax({
-    low: -.843184,
+    low: -.5,
     high: 1,
-    precisions: [1, 0.1, 0.01, 0.001],
+    precisions: [0.1, 0.01, 0.001],
     fn: (n: number) => {
-      const adj = Math.asin(Math.sin(t * Math.PI)) * n / Math.PI;
-      const l = ((1 - t) ** .5 + adj) * 100;
+      const adj = rnd(Math.asin(Math.sin(t * Math.PI)) * n / Math.PI);
+      const l = ((1 - t) ** .5 + safePow(adj, z)) * 100;
       return maxC(l, h);
     },
   });
@@ -43,9 +51,8 @@ for (const k in hues) {
 
   for (let i = 25; i < 1000; i += 25) {
     const j = i / 1000;
-    const adj = Math.asin(Math.sin(j * Math.PI)) * x / Math.PI;
-    const l = ((1 - j) ** .5 + adj) *
-      100;
+    const adj = rnd(Math.asin(Math.sin(j * Math.PI)) * x / Math.PI);
+    const l = ((1 - j) ** .5 + safePow(adj, z)) * 100;
     // const l = (1 - _i)**(2/5) * 100;
     let c = maxC(l, h);
     if (k === 'green') {
