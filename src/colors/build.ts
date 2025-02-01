@@ -24,7 +24,8 @@ for (const k in hues) {
     precisions: [0.1, 0.01, 0.001],
     fn: (n: number) => {
       const adj = Math.asin(Math.sin(t * Math.PI)) / Math.PI;
-      const l = ((1 - t) ** .5 + adj * n) * 100 - n * 4;
+      const a = 1 - Math.asin(t) * 2 / Math.PI;
+      const l = (a + adj * n) * 100 - n * 4;
       return maxC(l, h);
     },
   });
@@ -36,7 +37,9 @@ for (const k in hues) {
   for (let i = 25; i < 1000; i += 25) {
     const j = i / 1000;
     const adj = Math.asin(Math.sin(j * Math.PI)) / Math.PI;
-    const l = ((1 - j) ** .5 + adj * x) * 100 - x * 4;
+
+    const a = 1 - Math.asin(j) * 2 / Math.PI;
+    const l = (a + adj * x) * 100 - x * 4;
 
     let c = maxC(l, h);
     if (k === 'green') {
