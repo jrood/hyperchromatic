@@ -24,7 +24,9 @@ type PeakSearchMaxProps = {
   fn: (n: number) => number;
 };
 
-export function peakSearchMax({ low, high, precisions, fn }: PeakSearchMaxProps) {
+export function peakSearchMax(
+  { low, high, precisions, fn }: PeakSearchMaxProps,
+) {
   for (const p of precisions) {
     let prevR = 0;
     for (let n = low; n < high; n += p) {
@@ -48,13 +50,5 @@ export const maxC = (l: number, h: number) =>
     low: 0,
     high: 0.4,
     precision: 0.00001,
-    fn: c => inP3(`oklch(${l}% ${c} ${h})`),
-  });
-
-export const maxL = (h: number) =>
-  peakSearchMax({
-    low: 40,
-    high: 100,
-    precisions: [1, 0.1, 0.01, 0.001],
-    fn: l => maxC(l, h),
+    fn: (c) => inP3(`oklch(${l}% ${c} ${h})`),
   });

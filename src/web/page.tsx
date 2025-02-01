@@ -1,7 +1,7 @@
 import { ColorList } from './ColorList.tsx';
 import { Styles } from './styles/Styles.tsx';
 
-export const description = 'colors for modern displays';
+export const description = 'vibrant colors for the web';
 
 export const page = () =>
   '<!doctype html>' +

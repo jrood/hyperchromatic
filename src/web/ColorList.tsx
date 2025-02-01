@@ -20,20 +20,19 @@ export const ColorList = () => (
       {Object.keys(colors).map(k => (
         <li>
           <div class='color-label'>{capitalize(k)}</div>
-          <div class='types'>
-            <ul>
-              {Object.entries((colors as Record<string, typeof colors.red>)[k])
-              .map(([num, color]) => (
-                <li
-                  style={`background:${oklch(color)};color:${fg(color.l)}`}
-                  class={`color-${num.slice(-2)}`}
-                >
-                  <span class='num'>{num}</span>
-                  <span class='code'>{oklch(color)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul>
+            {Object.entries(
+              (colors as Record<string, typeof colors.red>)[k],
+            ).map(([num, color]) => (
+              <li
+                style={`background:${oklch(color)};color:${fg(color.l)}`}
+                class={`color-${num.slice(-2)}`}
+              >
+                <span class='num'>{num}</span>
+                <span class='code'>{oklch(color)}</span>
+              </li>
+            ))}
+          </ul>
         </li>
       ))}
     </ul>
