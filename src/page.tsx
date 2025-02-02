@@ -10,10 +10,7 @@ export const page = (colors: Colors) =>
     <html lang='en'>
       <head>
         <title>Hyperchromatic</title>
-        <meta
-          name={description}
-          content='An open source P3 OKLCH color palette'
-        />
+        <meta name={description} content={description} />
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='data:' />
@@ -32,7 +29,7 @@ export const page = (colors: Colors) =>
             Hyperchromatic is an open source palette using OKLCH colors in the
             P3 color space.
           </p>
-          <div class="flex-p">
+          <div class='flex-p'>
             <div>
               <h2>What's P3?</h2>
               <p>
