@@ -2,7 +2,7 @@ import { TrustedHTML } from 'https://jsr.io/@mary/jsx/0.1.0/lib/types.ts';
 import { oklch } from './oklch.ts';
 import { Colors } from './types.ts';
 
-const fg = (l: number) => (l > 72.5 ? '#000' : '#fff');
+const fg = (l: number) => (l > 72 ? '#000' : '#fff');
 
 const capitalize = (k: string) => k[0].toUpperCase() + k.slice(1);
 

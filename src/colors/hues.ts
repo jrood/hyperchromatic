@@ -1,7 +1,7 @@
 export const hues: Record<string, number> = {
-  red: 30,
-  orange: 55,
-  yellow: 80,
+  red: 29,
+  orange: 57,
+  yellow: 85,
   green: 145,
   blue: 255,
   indigo: 285,
