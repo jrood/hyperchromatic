@@ -1,9 +1,10 @@
+import { Colors } from './types.ts';
 import { ColorList } from './ColorList.tsx';
 import { Styles } from './styles/Styles.tsx';
 
 export const description = 'vibrant colors for the web';
 
-export const page = () =>
+export const page = (colors: Colors) =>
   '<!doctype html>' +
   (
     <html lang='en'>
@@ -16,7 +17,7 @@ export const page = () =>
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='data:' />
-        <Styles />
+        <Styles colors={colors} />
       </head>
       <body>
         <div class='gradient' />
@@ -51,7 +52,7 @@ export const page = () =>
             </div>
           </div>
 
-          <ColorList />
+          <ColorList colors={colors} />
           {/* <h2>How will these colors look on displays that don't support P3?</h2>
           <input id='show-fallbacks' type='checkbox' />
           <label for='show-fallbacks'>Show sRGB fallbacks</label>

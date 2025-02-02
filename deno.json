@@ -1,11 +1,6 @@
 {
   "tasks": {
-    "build:all": "deno task build:colors && deno task build:web",
-    "build:colors": "deno run -A src/colors/build.ts",
-    "build:web": "deno run -A src/web/build.ts"
-  },
-  "imports": {
-    "colors": "./dist/colors/colors.ts"
+    "build": "deno run -A src/build.ts"
   },
   "fmt": {
     "singleQuote": true
