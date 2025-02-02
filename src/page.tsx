@@ -26,25 +26,25 @@ export const page = (colors: Colors) =>
         </header>
         <main>
           <p>
-            Hyperchromatic is an open source palette using OKLCH colors in the
-            P3 color space.
+            Hyperchromatic is an open source palette using colors in the P3
+            gamut via OKLCH.
           </p>
           <div class='flex-p'>
             <div>
-              <h2>What's P3?</h2>
+              <h2>What's the P3 gamut?</h2>
               <p>
-                P3 is a "color space" or range of colors that a display can
-                show. Many modern displays support P3 but older displays only
-                support the smaller sRGB space. Colors in CSS using hex or rgb
-                are limited to the sRGB space.
+                A "gamut" is a range of colors that a display can show, and P3
+                is a gamut supported by many modern displays, while older
+                displays only support the smaller sRGB space.
               </p>
             </div>
             <div>
               <h2>What's OKLCH?</h2>
               <p>
                 OKLCH can be used in CSS to specify colors using lightness,
-                chroma, and hue. These colors might fall in sRGB, P3, or even
-                wider spaces.
+                chroma, and hue. These colors might fall in sRGB, P3, or
+                even wider spaces. Colors defined in CSS using hex or rgb are
+                limited to the sRGB space.
               </p>
             </div>
           </div>
