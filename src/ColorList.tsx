@@ -2,7 +2,7 @@ import { TrustedHTML } from 'https://jsr.io/@mary/jsx/0.1.0/lib/types.ts';
 import { oklch } from './oklch.ts';
 import { Colors } from './types.ts';
 
-const fg = (l: number) => (l > 72 ? '#000' : '#fff');
+const fg = (n: number) => (n < 500 ? '#000' : '#fff');
 
 const capitalize = (k: string) => k[0].toUpperCase() + k.slice(1);
 
@@ -25,7 +25,7 @@ export const ColorList = ({ colors }: { colors: Colors }) => (
               (colors as Record<string, typeof colors.red>)[k],
             ).map(([num, color]) => (
               <li
-                style={`background:${oklch(color)};color:${fg(color.l)}`}
+                style={`background:${oklch(color)};color:${fg(+num)}`}
                 class={`color-${num.slice(-2)}`}
               >
                 <span class='num'>{num}</span>

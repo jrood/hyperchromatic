@@ -1,5 +1,5 @@
 import { Colors } from '../types.ts';
-import { hues } from './hues.ts';
+import { hues, targets } from './hues.ts';
 import { binarySearchMax, peakSearchMax } from './search.ts';
 import { inGamut } from 'npm:culori';
 const { floor, asin, sin, min, PI } = Math;
@@ -33,7 +33,7 @@ export function createColors() {
       low: -1,
       high: 1,
       precisions: [0.01, .0001],
-      fn: (adj: number) => getMaxC(getL(.5, adj), h),
+      fn: (adj: number) => getMaxC(getL(targets[k] / 1000, adj), h),
     });
 
     for (let i = 25; i < 1000; i += 25) {
