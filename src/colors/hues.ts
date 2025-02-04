@@ -6,7 +6,7 @@ export const hues: Record<string, number> = {
   blue: 255,
   indigo: 285,
   purple: 310,
-  fuschia: 355,
+  // pink: 345,
 };
 
 export const targets: Record<string, number> = {
@@ -17,5 +17,5 @@ export const targets: Record<string, number> = {
   blue: 600,
   indigo: 700,
   purple: 600,
-  fuschia: 500,
+  // pink: 500,
 };

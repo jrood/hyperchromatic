@@ -4,23 +4,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-}
-
-.gradient {
-  position: absolute;
-  width: 100vw;
-  height: 100vw;
-  top: calc(min(256px, 50vw) - 50vw);
-  z-index: -1;
 }
 
 header {
   display: flex;
   align-items: center;
-  height: min(256px, 50vw);
+  height: 256px;
   justify-content: center;
-  color: #fff;
   padding-right: 4px;
 }
 
@@ -36,9 +26,11 @@ hgroup * {
 }
 
 h1 {
-  font-size: min(64px, 12.5vw);
+  font-size: min(56px, 12.5vw);
   line-height: calc(1em + 12px);
   font-weight: 600;
+  margin-left: -3px;
+  margin-top: -4px;
 }
 
 h2 {
@@ -53,22 +45,31 @@ hgroup p {
 }
 
 ul {
-  display: flex;
   margin: 0;
   padding: 0;
 }
 
 main > ul {
+  display: grid;
   padding: 16px 0;
-  flex-wrap: wrap;
   gap: 16px;
+  grid-template-columns: 1fr;
 }
 
-main > ul > li {
-  flex-grow: 1;
+@media (min-width: 500px) {
+  main > ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 700px) {
+  main > ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 li > ul {
+  display: flex;
   flex-direction: column;
 }
 
@@ -147,4 +148,14 @@ a {
   .flex-p > * {
     width: calc(50% - 8px);
   }
+}
+
+.logo {
+  display: flex;
+}
+
+.logo > div {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
 }

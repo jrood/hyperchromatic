@@ -1,8 +1,23 @@
 import { Colors } from './types.ts';
 import { ColorList } from './ColorList.tsx';
 import { Styles } from './styles/Styles.tsx';
+import { oklch } from './oklch.ts';
 
 export const description = 'vibrant colors for the web';
+
+const Logo = ({ colors }: { colors: Colors }) => (
+  <div class='logo'>
+    <div style={`background: ${oklch(colors.red[500])}`} />
+    <div style={`background: ${oklch(colors.orange[400])}`} />
+    <div style={`background: ${oklch(colors.yellow[300])}`} />
+    <div style={`background: ${oklch(colors.green[500])}`} />
+    <div style={`background: ${oklch(colors.blue[600])}`} />
+    <div style={`background: ${oklch(colors.indigo[700])}`} />
+    <div style={`background: ${oklch(colors.purple[600])}`} />
+    {/* <div style={`background: ${oklch(colors.pink[500])}`} /> */}
+    <div style={`background: ${oklch(colors.gray[500])}`} />
+  </div>
+);
 
 export const page = (colors: Colors) =>
   '<!doctype html>' +
@@ -14,12 +29,12 @@ export const page = (colors: Colors) =>
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='data:' />
-        <Styles colors={colors} />
+        <Styles />
       </head>
       <body>
-        <div class='gradient' />
         <header>
           <hgroup>
+            <Logo colors={colors} />
             <h1>Hyperchromatic</h1>
             <p>{description}</p>
           </hgroup>
@@ -42,9 +57,9 @@ export const page = (colors: Colors) =>
               <h2>What's OKLCH?</h2>
               <p>
                 OKLCH can be used in CSS to specify colors using lightness,
-                chroma, and hue. These colors might fall in sRGB, P3, or
-                even wider spaces. Colors defined in CSS using hex or rgb are
-                limited to the sRGB space.
+                chroma, and hue. These colors might fall in sRGB, P3, or even
+                wider spaces. Colors defined in CSS using hex or rgb are limited
+                to the sRGB space.
               </p>
             </div>
           </div>

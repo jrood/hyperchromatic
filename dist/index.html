@@ -17,23 +17,14 @@
       body {
         flex-direction: column;
         align-items: center;
-        gap: 32px;
         margin: 0;
         font-family: Figtree;
         display: flex;
       }
-      .gradient {
-        z-index: -1;
-        width: 100vw;
-        height: 100vw;
-        position: absolute;
-        top: calc(min(256px, 50vw) - 50vw);
-      }
       header {
-        color: #fff;
         justify-content: center;
         align-items: center;
-        height: min(256px, 50vw);
+        height: 256px;
         padding-right: 4px;
         display: flex;
       }
@@ -47,7 +38,9 @@
         margin: 0;
       }
       h1 {
-        font-size: min(64px, 12.5vw);
+        margin-top: -4px;
+        margin-left: -3px;
+        font-size: min(56px, 12.5vw);
         font-weight: 600;
         line-height: calc(1em + 12px);
       }
@@ -63,18 +56,26 @@
       ul {
         margin: 0;
         padding: 0;
-        display: flex;
       }
       main > ul {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr;
         gap: 16px;
         padding: 16px 0;
+        display: grid;
       }
-      main > ul > li {
-        flex-grow: 1;
+      @media (width>=500px) {
+        main > ul {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (width>=700px) {
+        main > ul {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
       }
       li > ul {
         flex-direction: column;
+        display: flex;
       }
       li {
         list-style: none;
@@ -138,33 +139,29 @@
           width: calc(50% - 8px);
         }
       }
-      .gradient {
-        background: conic-gradient(
-          from 180deg in oklab,
-          #fff 14.25%,
-          oklch(97.58% 0.031 85) 17.5%,
-          oklch(95.16% 0.063 85) 20.75%,
-          oklch(85.23% 0.201 85) 24%,
-          oklch(79.97% 0.188 85) 27.25%,
-          oklch(69.66% 0.192 57) 33.75%,
-          oklch(64.87% 0.299 29) 40.25%,
-          oklch(67.66% 0.312 355) 46.75%,
-          oklch(59.93% 0.32 310) 53.25%,
-          oklch(60.01% 0.245 285) 59.75%,
-          oklch(66.13% 0.197 255) 66.25%,
-          oklch(73.8% 0.252 145) 72.75%,
-          oklch(80.6% 0.164 145) 76%,
-          oklch(93.62% 0.031 145) 79.25%,
-          oklch(96.81% 0.011 145) 82.5%,
-          #fff 85.75%
-        );
+      .logo {
+        display: flex;
+      }
+      .logo > div {
+        border-radius: 8px;
+        width: 16px;
+        height: 16px;
       }
     </style>
   </head>
   <body>
-    <div class=gradient></div>
     <header>
       <hgroup>
+        <div class=logo>
+          <div style="background: oklch(64.87% 0.299 29)"></div>
+          <div style="background: oklch(76.2% 0.21 57)"></div>
+          <div style="background: oklch(85.23% 0.201 85)"></div>
+          <div style="background: oklch(66.66% 0.284 145)"></div>
+          <div style="background: oklch(58.6% 0.246 255)"></div>
+          <div style="background: oklch(51.37% 0.306 285)"></div>
+          <div style="background: oklch(59.93% 0.32 310)"></div>
+          <div style="background: oklch(66.66% 0 0)"></div>
+        </div>
         <h1>Hyperchromatic</h1>
         <p>vibrant colors for the web</p>
       </hgroup>
@@ -493,50 +490,6 @@
             <li style="background: oklch(24.98% 0.133 310); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.98% 0.133 310)</span></li>
             <li style="background: oklch(20.32% 0.108 310); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.32% 0.108 310)</span></li>
             <li style="background: oklch(14.32% 0.076 310); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.32% 0.076 310)</span></li>
-          </ul>
-        </li>
-        <li>
-          <div class=color-label>Fuschia</div>
-          <ul>
-            <li style="background: oklch(98.45% 0.011 355); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.45% 0.011 355)</span></li>
-            <li style="background: oklch(96.91% 0.022 355); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.91% 0.022 355)</span></li>
-            <li style="background: oklch(95.37% 0.034 355); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.37% 0.034 355)</span></li>
-            <li style="background: oklch(93.82% 0.046 355); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(93.82% 0.046 355)</span></li>
-            <li style="background: oklch(92.27% 0.058 355); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(92.27% 0.058 355)</span></li>
-            <li style="background: oklch(90.71% 0.071 355); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(90.71% 0.071 355)</span></li>
-            <li style="background: oklch(89.14% 0.084 355); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(89.14% 0.084 355)</span></li>
-            <li style="background: oklch(87.57% 0.098 355); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(87.57% 0.098 355)</span></li>
-            <li style="background: oklch(86% 0.112 355); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(86% 0.112 355)</span></li>
-            <li style="background: oklch(84.41% 0.126 355); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(84.41% 0.126 355)</span></li>
-            <li style="background: oklch(82.81% 0.142 355); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(82.81% 0.142 355)</span></li>
-            <li style="background: oklch(81.19% 0.157 355); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(81.19% 0.157 355)</span></li>
-            <li style="background: oklch(79.57% 0.174 355); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(79.57% 0.174 355)</span></li>
-            <li style="background: oklch(77.93% 0.191 355); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(77.93% 0.191 355)</span></li>
-            <li style="background: oklch(76.27% 0.209 355); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(76.27% 0.209 355)</span></li>
-            <li style="background: oklch(74.59% 0.227 355); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(74.59% 0.227 355)</span></li>
-            <li style="background: oklch(72.9% 0.247 355); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(72.9% 0.247 355)</span></li>
-            <li style="background: oklch(71.18% 0.267 355); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(71.18% 0.267 355)</span></li>
-            <li style="background: oklch(69.43% 0.289 355); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(69.43% 0.289 355)</span></li>
-            <li style="background: oklch(67.66% 0.312 355); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(67.66% 0.312 355)</span></li>
-            <li style="background: oklch(65.75% 0.303 355); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(65.75% 0.303 355)</span></li>
-            <li style="background: oklch(63.82% 0.294 355); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(63.82% 0.294 355)</span></li>
-            <li style="background: oklch(61.84% 0.285 355); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(61.84% 0.285 355)</span></li>
-            <li style="background: oklch(59.82% 0.275 355); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(59.82% 0.275 355)</span></li>
-            <li style="background: oklch(57.76% 0.266 355); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(57.76% 0.266 355)</span></li>
-            <li style="background: oklch(55.65% 0.256 355); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(55.65% 0.256 355)</span></li>
-            <li style="background: oklch(53.47% 0.246 355); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(53.47% 0.246 355)</span></li>
-            <li style="background: oklch(51.23% 0.236 355); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(51.23% 0.236 355)</span></li>
-            <li style="background: oklch(48.91% 0.225 355); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(48.91% 0.225 355)</span></li>
-            <li style="background: oklch(46.5% 0.214 355); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(46.5% 0.214 355)</span></li>
-            <li style="background: oklch(43.99% 0.202 355); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(43.99% 0.202 355)</span></li>
-            <li style="background: oklch(41.36% 0.19 355); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(41.36% 0.19 355)</span></li>
-            <li style="background: oklch(38.58% 0.177 355); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(38.58% 0.177 355)</span></li>
-            <li style="background: oklch(35.61% 0.164 355); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(35.61% 0.164 355)</span></li>
-            <li style="background: oklch(32.42% 0.149 355); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(32.42% 0.149 355)</span></li>
-            <li style="background: oklch(28.91% 0.133 355); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(28.91% 0.133 355)</span></li>
-            <li style="background: oklch(24.96% 0.115 355); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.96% 0.115 355)</span></li>
-            <li style="background: oklch(20.31% 0.093 355); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.31% 0.093 355)</span></li>
-            <li style="background: oklch(14.31% 0.066 355); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.31% 0.066 355)</span></li>
           </ul>
         </li>
         <li>
