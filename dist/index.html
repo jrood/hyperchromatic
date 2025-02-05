@@ -15,43 +15,67 @@
           format("woff2");
       }
       body {
-        flex-direction: column;
-        align-items: center;
         margin: 0;
         font-family: Figtree;
-        display: flex;
       }
       header {
         justify-content: center;
         align-items: center;
-        height: 256px;
-        padding-right: 4px;
+        width: 100%;
+        height: 192px;
         display: flex;
       }
-      main {
-        max-width: 768px;
-        padding: 16px;
-        position: relative;
-        overflow: visible;
+      @media (width>=384px) {
+        header {
+          height: 224px;
+        }
       }
-      hgroup * {
-        margin: 0;
+      @media (width>=512px) {
+        header {
+          height: 256px;
+        }
+      }
+      main {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 16px;
       }
       h1 {
         margin-top: -4px;
+        margin-bottom: 0;
         margin-left: -3px;
-        font-size: min(56px, 12.5vw);
+        font-size: 40px;
         font-weight: 600;
-        line-height: calc(1em + 12px);
+      }
+      @media (width>=384px) {
+        h1 {
+          font-size: 48px;
+        }
+      }
+      @media (width>=512px) {
+        h1 {
+          font-size: 56px;
+        }
+      }
+      hgroup p {
+        text-align: right;
+        margin-top: -8px;
+        margin-bottom: 0;
+      }
+      @media (width>=384px) {
+        hgroup p {
+          margin-top: -10px;
+        }
+      }
+      @media (width>=512px) {
+        hgroup p {
+          margin-top: -12px;
+        }
       }
       h2 {
         margin-top: 28px;
         font-size: 18px;
         font-weight: 600;
-      }
-      hgroup p {
-        text-align: center;
-        margin-top: -12px;
       }
       ul {
         margin: 0;
@@ -63,22 +87,27 @@
         padding: 16px 0;
         display: grid;
       }
-      @media (width>=500px) {
+      @media (width>=512px) {
         main > ul {
           grid-template-columns: 1fr 1fr;
         }
       }
-      @media (width>=700px) {
+      @media (width>=768px) {
         main > ul {
           grid-template-columns: 1fr 1fr 1fr;
         }
       }
-      li > ul {
-        flex-direction: column;
-        display: flex;
+      @media (width>=1024px) {
+        main > ul {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
       }
       li {
         list-style: none;
+      }
+      li > ul {
+        flex-direction: column;
+        display: flex;
       }
       li > ul > li {
         justify-content: space-between;
@@ -86,8 +115,9 @@
         font-size: 14px;
         display: flex;
       }
-      .color-label {
+      h3 {
         margin-bottom: 4px;
+        font-size: 16px;
         font-weight: 600;
       }
       .num {
@@ -96,14 +126,11 @@
       select {
         font-family: inherit;
         font-size: inherit;
+        border-radius: 16px;
         height: 32px;
-        margin: 0 16px 0 4px;
-      }
-      input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        margin: 0 0 0 4px;
-        transform: translateY(4px);
+        margin-top: -8px;
+        margin-left: 4px;
+        padding: 0 6px;
       }
       ul li.color-25,
       ul li.color-50,
@@ -118,7 +145,6 @@
       }
       .code {
         text-align: right;
-        min-width: 168px;
       }
       footer {
         text-align: center;
@@ -126,18 +152,6 @@
       }
       a {
         color: #000;
-      }
-      .flex-p {
-        flex-wrap: wrap;
-        display: flex;
-      }
-      @media (width>=512px) {
-        .flex-p {
-          gap: 16px;
-        }
-        .flex-p > * {
-          width: calc(50% - 8px);
-        }
       }
       .logo {
         display: flex;
@@ -150,15 +164,15 @@
     </style>
   </head>
   <body>
-    <header>
+    <header style="background: oklch(96.81% 0 0)">
       <hgroup>
         <div class=logo>
-          <div style="background: oklch(64.87% 0.299 29)"></div>
-          <div style="background: oklch(76.2% 0.21 57)"></div>
-          <div style="background: oklch(85.23% 0.201 85)"></div>
+          <div style="background: oklch(65.41% 0.293 30)"></div>
+          <div style="background: oklch(75.54% 0.213 55)"></div>
+          <div style="background: oklch(83.54% 0.199 80)"></div>
           <div style="background: oklch(66.66% 0.284 145)"></div>
           <div style="background: oklch(58.6% 0.246 255)"></div>
-          <div style="background: oklch(51.37% 0.306 285)"></div>
+          <div style="background: oklch(50.1% 0.307 280)"></div>
           <div style="background: oklch(59.93% 0.32 310)"></div>
           <div style="background: oklch(66.66% 0 0)"></div>
         </div>
@@ -167,157 +181,152 @@
       </hgroup>
     </header>
     <main>
-      <p>Hyperchromatic is an open source palette using colors in the P3 gamut via OKLCH.</p>
-      <div class=flex-p>
-        <div>
-          <h2>What&#39;s the P3 gamut?</h2>
-          <p>A &quot;gamut&quot; is a range of colors that a display can show, and P3 is a gamut supported by many modern displays, while older displays only support the smaller sRGB space.</p>
-        </div>
-        <div>
-          <h2>What&#39;s OKLCH?</h2>
-          <p>OKLCH can be used in CSS to specify colors using lightness, chroma, and hue. These colors might fall in sRGB, P3, or even wider spaces. Colors defined in CSS using hex or rgb are limited to the sRGB space.</p>
-        </div>
-      </div>
-      <label for=inc-by>Increment by</label><select id=inc-by>
+      <h2>An open source P3/OKLCH color palette</h2>
+      <p>
+        Hex and rgb colors on the web are limited to the sRGB range of colors supported by older displays. Hyperchromatic is an open source palette using <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch>OKLCH</a> for colors in
+        the wider P3 range that modern displays support.
+      </p>
+      <h2>Colors</h2>
+      <label for=inc-by>Precision</label><select id=inc-by>
         <option value=100 selected=selected>100</option>
         <option value=50>50</option>
         <option value=25>25</option>
       </select>
       <ul>
         <li>
-          <div class=color-label>Red</div>
+          <h3>Red</h3>
           <ul>
-            <li style="background: oklch(98.31% 0.01 29); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.31% 0.01 29)</span></li>
-            <li style="background: oklch(96.63% 0.021 29); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.63% 0.021 29)</span></li>
-            <li style="background: oklch(94.95% 0.032 29); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(94.95% 0.032 29)</span></li>
-            <li style="background: oklch(93.26% 0.044 29); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(93.26% 0.044 29)</span></li>
-            <li style="background: oklch(91.57% 0.056 29); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(91.57% 0.056 29)</span></li>
-            <li style="background: oklch(89.87% 0.068 29); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(89.87% 0.068 29)</span></li>
-            <li style="background: oklch(88.17% 0.081 29); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(88.17% 0.081 29)</span></li>
-            <li style="background: oklch(86.46% 0.094 29); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(86.46% 0.094 29)</span></li>
-            <li style="background: oklch(84.74% 0.107 29); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(84.74% 0.107 29)</span></li>
-            <li style="background: oklch(83.01% 0.121 29); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(83.01% 0.121 29)</span></li>
-            <li style="background: oklch(81.27% 0.136 29); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(81.27% 0.136 29)</span></li>
-            <li style="background: oklch(79.52% 0.151 29); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(79.52% 0.151 29)</span></li>
-            <li style="background: oklch(77.76% 0.167 29); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(77.76% 0.167 29)</span></li>
-            <li style="background: oklch(75.97% 0.183 29); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(75.97% 0.183 29)</span></li>
-            <li style="background: oklch(74.18% 0.2 29); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(74.18% 0.2 29)</span></li>
-            <li style="background: oklch(72.36% 0.218 29); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(72.36% 0.218 29)</span></li>
-            <li style="background: oklch(70.52% 0.237 29); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(70.52% 0.237 29)</span></li>
-            <li style="background: oklch(68.66% 0.257 29); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(68.66% 0.257 29)</span></li>
-            <li style="background: oklch(66.78% 0.277 29); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(66.78% 0.277 29)</span></li>
-            <li style="background: oklch(64.87% 0.299 29); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(64.87% 0.299 29)</span></li>
-            <li style="background: oklch(63.1% 0.291 29); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(63.1% 0.291 29)</span></li>
-            <li style="background: oklch(61.31% 0.282 29); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(61.31% 0.282 29)</span></li>
-            <li style="background: oklch(59.47% 0.274 29); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(59.47% 0.274 29)</span></li>
-            <li style="background: oklch(57.59% 0.265 29); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(57.59% 0.265 29)</span></li>
-            <li style="background: oklch(55.67% 0.256 29); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(55.67% 0.256 29)</span></li>
-            <li style="background: oklch(53.69% 0.247 29); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(53.69% 0.247 29)</span></li>
-            <li style="background: oklch(51.66% 0.238 29); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(51.66% 0.238 29)</span></li>
-            <li style="background: oklch(49.55% 0.228 29); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(49.55% 0.228 29)</span></li>
-            <li style="background: oklch(47.38% 0.218 29); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(47.38% 0.218 29)</span></li>
-            <li style="background: oklch(45.11% 0.208 29); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(45.11% 0.208 29)</span></li>
-            <li style="background: oklch(42.74% 0.197 29); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(42.74% 0.197 29)</span></li>
-            <li style="background: oklch(40.24% 0.185 29); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(40.24% 0.185 29)</span></li>
-            <li style="background: oklch(37.6% 0.173 29); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(37.6% 0.173 29)</span></li>
-            <li style="background: oklch(34.78% 0.16 29); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(34.78% 0.16 29)</span></li>
-            <li style="background: oklch(31.72% 0.146 29); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(31.72% 0.146 29)</span></li>
-            <li style="background: oklch(28.35% 0.13 29); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(28.35% 0.13 29)</span></li>
-            <li style="background: oklch(24.54% 0.113 29); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.54% 0.113 29)</span></li>
-            <li style="background: oklch(20.03% 0.092 29); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.03% 0.092 29)</span></li>
-            <li style="background: oklch(14.17% 0.065 29); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.17% 0.065 29)</span></li>
+            <li style="background: oklch(98.34% 0.01 30); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.34% 0.01 30)</span></li>
+            <li style="background: oklch(96.69% 0.021 30); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.69% 0.021 30)</span></li>
+            <li style="background: oklch(95.03% 0.032 30); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.03% 0.032 30)</span></li>
+            <li style="background: oklch(93.37% 0.043 30); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(93.37% 0.043 30)</span></li>
+            <li style="background: oklch(91.7% 0.055 30); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(91.7% 0.055 30)</span></li>
+            <li style="background: oklch(90.03% 0.067 30); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(90.03% 0.067 30)</span></li>
+            <li style="background: oklch(88.36% 0.079 30); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(88.36% 0.079 30)</span></li>
+            <li style="background: oklch(86.68% 0.092 30); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(86.68% 0.092 30)</span></li>
+            <li style="background: oklch(84.98% 0.106 30); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(84.98% 0.106 30)</span></li>
+            <li style="background: oklch(83.28% 0.119 30); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(83.28% 0.119 30)</span></li>
+            <li style="background: oklch(81.57% 0.134 30); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(81.57% 0.134 30)</span></li>
+            <li style="background: oklch(79.85% 0.148 30); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(79.85% 0.148 30)</span></li>
+            <li style="background: oklch(78.11% 0.164 30); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(78.11% 0.164 30)</span></li>
+            <li style="background: oklch(76.36% 0.18 30); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(76.36% 0.18 30)</span></li>
+            <li style="background: oklch(74.59% 0.197 30); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(74.59% 0.197 30)</span></li>
+            <li style="background: oklch(72.8% 0.214 30); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(72.8% 0.214 30)</span></li>
+            <li style="background: oklch(70.99% 0.232 30); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(70.99% 0.232 30)</span></li>
+            <li style="background: oklch(69.15% 0.251 30); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(69.15% 0.251 30)</span></li>
+            <li style="background: oklch(67.3% 0.272 30); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(67.3% 0.272 30)</span></li>
+            <li style="background: oklch(65.41% 0.293 30); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(65.41% 0.293 30)</span></li>
+            <li style="background: oklch(63.62% 0.285 30); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(63.62% 0.285 30)</span></li>
+            <li style="background: oklch(61.8% 0.276 30); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(61.8% 0.276 30)</span></li>
+            <li style="background: oklch(59.93% 0.268 30); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(59.93% 0.268 30)</span></li>
+            <li style="background: oklch(58.03% 0.26 30); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(58.03% 0.26 30)</span></li>
+            <li style="background: oklch(56.08% 0.251 30); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(56.08% 0.251 30)</span></li>
+            <li style="background: oklch(54.07% 0.242 30); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(54.07% 0.242 30)</span></li>
+            <li style="background: oklch(52.01% 0.233 30); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(52.01% 0.233 30)</span></li>
+            <li style="background: oklch(49.88% 0.223 30); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(49.88% 0.223 30)</span></li>
+            <li style="background: oklch(47.68% 0.213 30); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(47.68% 0.213 30)</span></li>
+            <li style="background: oklch(45.38% 0.203 30); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(45.38% 0.203 30)</span></li>
+            <li style="background: oklch(42.98% 0.192 30); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(42.98% 0.192 30)</span></li>
+            <li style="background: oklch(40.46% 0.181 30); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(40.46% 0.181 30)</span></li>
+            <li style="background: oklch(37.79% 0.169 30); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(37.79% 0.169 30)</span></li>
+            <li style="background: oklch(34.94% 0.156 30); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(34.94% 0.156 30)</span></li>
+            <li style="background: oklch(31.85% 0.142 30); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(31.85% 0.142 30)</span></li>
+            <li style="background: oklch(28.46% 0.127 30); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(28.46% 0.127 30)</span></li>
+            <li style="background: oklch(24.62% 0.11 30); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.62% 0.11 30)</span></li>
+            <li style="background: oklch(20.09% 0.09 30); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.09% 0.09 30)</span></li>
+            <li style="background: oklch(14.2% 0.063 30); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.2% 0.063 30)</span></li>
           </ul>
         </li>
         <li>
-          <div class=color-label>Orange</div>
+          <h3>Orange</h3>
           <ul>
-            <li style="background: oklch(98.55% 0.01 57); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.55% 0.01 57)</span></li>
-            <li style="background: oklch(97.11% 0.021 57); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(97.11% 0.021 57)</span></li>
-            <li style="background: oklch(95.67% 0.033 57); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.67% 0.033 57)</span></li>
-            <li style="background: oklch(94.22% 0.044 57); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(94.22% 0.044 57)</span></li>
-            <li style="background: oklch(92.77% 0.056 57); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(92.77% 0.056 57)</span></li>
-            <li style="background: oklch(91.31% 0.068 57); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(91.31% 0.068 57)</span></li>
-            <li style="background: oklch(89.85% 0.08 57); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(89.85% 0.08 57)</span></li>
-            <li style="background: oklch(88.38% 0.093 57); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(88.38% 0.093 57)</span></li>
-            <li style="background: oklch(86.9% 0.106 57); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(86.9% 0.106 57)</span></li>
-            <li style="background: oklch(85.41% 0.12 57); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(85.41% 0.12 57)</span></li>
-            <li style="background: oklch(83.91% 0.133 57); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(83.91% 0.133 57)</span></li>
-            <li style="background: oklch(82.4% 0.148 57); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(82.4% 0.148 57)</span></li>
-            <li style="background: oklch(80.87% 0.162 57); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(80.87% 0.162 57)</span></li>
-            <li style="background: oklch(79.33% 0.178 57); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(79.33% 0.178 57)</span></li>
-            <li style="background: oklch(77.77% 0.194 57); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(77.77% 0.194 57)</span></li>
-            <li style="background: oklch(76.2% 0.21 57); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(76.2% 0.21 57)</span></li>
-            <li style="background: oklch(74.6% 0.206 57); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(74.6% 0.206 57)</span></li>
-            <li style="background: oklch(72.98% 0.201 57); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(72.98% 0.201 57)</span></li>
-            <li style="background: oklch(71.33% 0.197 57); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(71.33% 0.197 57)</span></li>
-            <li style="background: oklch(69.66% 0.192 57); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(69.66% 0.192 57)</span></li>
-            <li style="background: oklch(67.66% 0.186 57); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(67.66% 0.186 57)</span></li>
-            <li style="background: oklch(65.62% 0.181 57); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(65.62% 0.181 57)</span></li>
-            <li style="background: oklch(63.55% 0.175 57); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(63.55% 0.175 57)</span></li>
-            <li style="background: oklch(61.43% 0.169 57); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(61.43% 0.169 57)</span></li>
-            <li style="background: oklch(59.26% 0.163 57); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(59.26% 0.163 57)</span></li>
-            <li style="background: oklch(57.05% 0.157 57); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(57.05% 0.157 57)</span></li>
-            <li style="background: oklch(54.77% 0.151 57); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(54.77% 0.151 57)</span></li>
-            <li style="background: oklch(52.43% 0.144 57); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(52.43% 0.144 57)</span></li>
-            <li style="background: oklch(50.01% 0.138 57); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(50.01% 0.138 57)</span></li>
-            <li style="background: oklch(47.51% 0.131 57); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(47.51% 0.131 57)</span></li>
-            <li style="background: oklch(44.89% 0.124 57); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(44.89% 0.124 57)</span></li>
-            <li style="background: oklch(42.16% 0.116 57); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(42.16% 0.116 57)</span></li>
-            <li style="background: oklch(39.28% 0.108 57); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(39.28% 0.108 57)</span></li>
-            <li style="background: oklch(36.22% 0.1 57); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(36.22% 0.1 57)</span></li>
-            <li style="background: oklch(32.92% 0.09 57); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(32.92% 0.09 57)</span></li>
-            <li style="background: oklch(29.31% 0.08 57); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(29.31% 0.08 57)</span></li>
-            <li style="background: oklch(25.26% 0.069 57); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(25.26% 0.069 57)</span></li>
-            <li style="background: oklch(20.51% 0.056 57); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.51% 0.056 57)</span></li>
-            <li style="background: oklch(14.41% 0.039 57); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.41% 0.039 57)</span></li>
+            <li style="background: oklch(98.51% 0.01 55); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.51% 0.01 55)</span></li>
+            <li style="background: oklch(97.03% 0.022 55); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(97.03% 0.022 55)</span></li>
+            <li style="background: oklch(95.54% 0.033 55); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.54% 0.033 55)</span></li>
+            <li style="background: oklch(94.05% 0.044 55); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(94.05% 0.044 55)</span></li>
+            <li style="background: oklch(92.56% 0.056 55); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(92.56% 0.056 55)</span></li>
+            <li style="background: oklch(91.06% 0.069 55); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(91.06% 0.069 55)</span></li>
+            <li style="background: oklch(89.56% 0.081 55); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(89.56% 0.081 55)</span></li>
+            <li style="background: oklch(88.05% 0.094 55); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(88.05% 0.094 55)</span></li>
+            <li style="background: oklch(86.53% 0.107 55); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(86.53% 0.107 55)</span></li>
+            <li style="background: oklch(85% 0.121 55); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(85% 0.121 55)</span></li>
+            <li style="background: oklch(83.46% 0.135 55); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(83.46% 0.135 55)</span></li>
+            <li style="background: oklch(81.91% 0.149 55); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(81.91% 0.149 55)</span></li>
+            <li style="background: oklch(80.34% 0.164 55); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(80.34% 0.164 55)</span></li>
+            <li style="background: oklch(78.76% 0.18 55); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(78.76% 0.18 55)</span></li>
+            <li style="background: oklch(77.16% 0.196 55); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(77.16% 0.196 55)</span></li>
+            <li style="background: oklch(75.54% 0.213 55); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(75.54% 0.213 55)</span></li>
+            <li style="background: oklch(73.9% 0.208 55); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(73.9% 0.208 55)</span></li>
+            <li style="background: oklch(72.24% 0.203 55); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(72.24% 0.203 55)</span></li>
+            <li style="background: oklch(70.56% 0.199 55); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(70.56% 0.199 55)</span></li>
+            <li style="background: oklch(68.84% 0.194 55); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(68.84% 0.194 55)</span></li>
+            <li style="background: oklch(66.88% 0.188 55); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(66.88% 0.188 55)</span></li>
+            <li style="background: oklch(64.88% 0.183 55); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(64.88% 0.183 55)</span></li>
+            <li style="background: oklch(62.85% 0.177 55); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(62.85% 0.177 55)</span></li>
+            <li style="background: oklch(60.77% 0.171 55); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(60.77% 0.171 55)</span></li>
+            <li style="background: oklch(58.65% 0.165 55); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(58.65% 0.165 55)</span></li>
+            <li style="background: oklch(56.47% 0.159 55); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(56.47% 0.159 55)</span></li>
+            <li style="background: oklch(54.24% 0.153 55); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(54.24% 0.153 55)</span></li>
+            <li style="background: oklch(51.94% 0.146 55); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(51.94% 0.146 55)</span></li>
+            <li style="background: oklch(49.56% 0.139 55); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(49.56% 0.139 55)</span></li>
+            <li style="background: oklch(47.1% 0.132 55); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(47.1% 0.132 55)</span></li>
+            <li style="background: oklch(44.53% 0.125 55); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(44.53% 0.125 55)</span></li>
+            <li style="background: oklch(41.83% 0.118 55); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(41.83% 0.118 55)</span></li>
+            <li style="background: oklch(38.99% 0.11 55); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(38.99% 0.11 55)</span></li>
+            <li style="background: oklch(35.97% 0.101 55); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(35.97% 0.101 55)</span></li>
+            <li style="background: oklch(32.71% 0.092 55); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(32.71% 0.092 55)</span></li>
+            <li style="background: oklch(29.14% 0.082 55); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(29.14% 0.082 55)</span></li>
+            <li style="background: oklch(25.13% 0.07 55); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(25.13% 0.07 55)</span></li>
+            <li style="background: oklch(20.43% 0.057 55); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.43% 0.057 55)</span></li>
+            <li style="background: oklch(14.37% 0.04 55); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.37% 0.04 55)</span></li>
           </ul>
         </li>
         <li>
-          <div class=color-label>Yellow</div>
+          <h3>Yellow</h3>
           <ul>
-            <li style="background: oklch(98.79% 0.015 85); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.79% 0.015 85)</span></li>
-            <li style="background: oklch(97.58% 0.031 85); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(97.58% 0.031 85)</span></li>
-            <li style="background: oklch(96.37% 0.047 85); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(96.37% 0.047 85)</span></li>
-            <li style="background: oklch(95.16% 0.063 85); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(95.16% 0.063 85)</span></li>
-            <li style="background: oklch(93.95% 0.079 85); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(93.95% 0.079 85)</span></li>
-            <li style="background: oklch(92.72% 0.096 85); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(92.72% 0.096 85)</span></li>
-            <li style="background: oklch(91.5% 0.112 85); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(91.5% 0.112 85)</span></li>
-            <li style="background: oklch(90.26% 0.129 85); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(90.26% 0.129 85)</span></li>
-            <li style="background: oklch(89.02% 0.147 85); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(89.02% 0.147 85)</span></li>
-            <li style="background: oklch(87.77% 0.164 85); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(87.77% 0.164 85)</span></li>
-            <li style="background: oklch(86.5% 0.182 85); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(86.5% 0.182 85)</span></li>
-            <li style="background: oklch(85.23% 0.201 85); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(85.23% 0.201 85)</span></li>
-            <li style="background: oklch(83.94% 0.198 85); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(83.94% 0.198 85)</span></li>
-            <li style="background: oklch(82.63% 0.195 85); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(82.63% 0.195 85)</span></li>
-            <li style="background: oklch(81.31% 0.192 85); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(81.31% 0.192 85)</span></li>
-            <li style="background: oklch(79.97% 0.188 85); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(79.97% 0.188 85)</span></li>
-            <li style="background: oklch(78.61% 0.185 85); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(78.61% 0.185 85)</span></li>
-            <li style="background: oklch(77.22% 0.182 85); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(77.22% 0.182 85)</span></li>
-            <li style="background: oklch(75.81% 0.179 85); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(75.81% 0.179 85)</span></li>
-            <li style="background: oklch(74.38% 0.175 85); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(74.38% 0.175 85)</span></li>
-            <li style="background: oklch(72.14% 0.17 85); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(72.14% 0.17 85)</span></li>
-            <li style="background: oklch(69.86% 0.165 85); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(69.86% 0.165 85)</span></li>
-            <li style="background: oklch(67.55% 0.159 85); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(67.55% 0.159 85)</span></li>
-            <li style="background: oklch(65.2% 0.154 85); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(65.2% 0.154 85)</span></li>
-            <li style="background: oklch(62.8% 0.148 85); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(62.8% 0.148 85)</span></li>
-            <li style="background: oklch(60.35% 0.142 85); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(60.35% 0.142 85)</span></li>
-            <li style="background: oklch(57.84% 0.136 85); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(57.84% 0.136 85)</span></li>
-            <li style="background: oklch(55.26% 0.13 85); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(55.26% 0.13 85)</span></li>
-            <li style="background: oklch(52.61% 0.124 85); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(52.61% 0.124 85)</span></li>
-            <li style="background: oklch(49.86% 0.117 85); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(49.86% 0.117 85)</span></li>
-            <li style="background: oklch(47.02% 0.111 85); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(47.02% 0.111 85)</span></li>
-            <li style="background: oklch(44.05% 0.104 85); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(44.05% 0.104 85)</span></li>
-            <li style="background: oklch(40.93% 0.096 85); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(40.93% 0.096 85)</span></li>
-            <li style="background: oklch(37.63% 0.088 85); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(37.63% 0.088 85)</span></li>
-            <li style="background: oklch(34.1% 0.08 85); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(34.1% 0.08 85)</span></li>
-            <li style="background: oklch(30.25% 0.071 85); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(30.25% 0.071 85)</span></li>
-            <li style="background: oklch(25.97% 0.061 85); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(25.97% 0.061 85)</span></li>
-            <li style="background: oklch(20.98% 0.049 85); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.98% 0.049 85)</span></li>
-            <li style="background: oklch(14.65% 0.034 85); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.65% 0.034 85)</span></li>
+            <li style="background: oklch(98.65% 0.015 80); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.65% 0.015 80)</span></li>
+            <li style="background: oklch(97.3% 0.03 80); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(97.3% 0.03 80)</span></li>
+            <li style="background: oklch(95.95% 0.045 80); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.95% 0.045 80)</span></li>
+            <li style="background: oklch(94.6% 0.061 80); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(94.6% 0.061 80)</span></li>
+            <li style="background: oklch(93.24% 0.077 80); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(93.24% 0.077 80)</span></li>
+            <li style="background: oklch(91.88% 0.094 80); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(91.88% 0.094 80)</span></li>
+            <li style="background: oklch(90.51% 0.11 80); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(90.51% 0.11 80)</span></li>
+            <li style="background: oklch(89.14% 0.127 80); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(89.14% 0.127 80)</span></li>
+            <li style="background: oklch(87.75% 0.144 80); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(87.75% 0.144 80)</span></li>
+            <li style="background: oklch(86.36% 0.162 80); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(86.36% 0.162 80)</span></li>
+            <li style="background: oklch(84.95% 0.18 80); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(84.95% 0.18 80)</span></li>
+            <li style="background: oklch(83.54% 0.199 80); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(83.54% 0.199 80)</span></li>
+            <li style="background: oklch(82.11% 0.195 80); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(82.11% 0.195 80)</span></li>
+            <li style="background: oklch(80.66% 0.192 80); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(80.66% 0.192 80)</span></li>
+            <li style="background: oklch(79.2% 0.188 80); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(79.2% 0.188 80)</span></li>
+            <li style="background: oklch(77.72% 0.185 80); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(77.72% 0.185 80)</span></li>
+            <li style="background: oklch(76.21% 0.181 80); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(76.21% 0.181 80)</span></li>
+            <li style="background: oklch(74.69% 0.178 80); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(74.69% 0.178 80)</span></li>
+            <li style="background: oklch(73.14% 0.174 80); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(73.14% 0.174 80)</span></li>
+            <li style="background: oklch(71.56% 0.17 80); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(71.56% 0.17 80)</span></li>
+            <li style="background: oklch(69.46% 0.165 80); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(69.46% 0.165 80)</span></li>
+            <li style="background: oklch(67.33% 0.16 80); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(67.33% 0.16 80)</span></li>
+            <li style="background: oklch(65.16% 0.155 80); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(65.16% 0.155 80)</span></li>
+            <li style="background: oklch(62.95% 0.15 80); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(62.95% 0.15 80)</span></li>
+            <li style="background: oklch(60.69% 0.144 80); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(60.69% 0.144 80)</span></li>
+            <li style="background: oklch(58.38% 0.139 80); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(58.38% 0.139 80)</span></li>
+            <li style="background: oklch(56.01% 0.133 80); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(56.01% 0.133 80)</span></li>
+            <li style="background: oklch(53.57% 0.127 80); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(53.57% 0.127 80)</span></li>
+            <li style="background: oklch(51.06% 0.121 80); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(51.06% 0.121 80)</span></li>
+            <li style="background: oklch(48.46% 0.115 80); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(48.46% 0.115 80)</span></li>
+            <li style="background: oklch(45.75% 0.109 80); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(45.75% 0.109 80)</span></li>
+            <li style="background: oklch(42.92% 0.102 80); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(42.92% 0.102 80)</span></li>
+            <li style="background: oklch(39.95% 0.095 80); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(39.95% 0.095 80)</span></li>
+            <li style="background: oklch(36.79% 0.087 80); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(36.79% 0.087 80)</span></li>
+            <li style="background: oklch(33.39% 0.079 80); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(33.39% 0.079 80)</span></li>
+            <li style="background: oklch(29.69% 0.07 80); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(29.69% 0.07 80)</span></li>
+            <li style="background: oklch(25.54% 0.06 80); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(25.54% 0.06 80)</span></li>
+            <li style="background: oklch(20.7% 0.049 80); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.7% 0.049 80)</span></li>
+            <li style="background: oklch(14.51% 0.034 80); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.51% 0.034 80)</span></li>
           </ul>
         </li>
         <li>
-          <div class=color-label>Green</div>
+          <h3>Green</h3>
           <ul>
             <li style="background: oklch(98.4% 0.003 145); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.4% 0.003 145)</span></li>
             <li style="background: oklch(96.81% 0.011 145); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.81% 0.011 145)</span></li>
@@ -361,7 +370,7 @@
           </ul>
         </li>
         <li>
-          <div class=color-label>Blue</div>
+          <h3>Blue</h3>
           <ul>
             <li style="background: oklch(98.38% 0.008 255); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.38% 0.008 255)</span></li>
             <li style="background: oklch(96.76% 0.017 255); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.76% 0.017 255)</span></li>
@@ -405,51 +414,51 @@
           </ul>
         </li>
         <li>
-          <div class=color-label>Indigo</div>
+          <h3>Indigo</h3>
           <ul>
-            <li style="background: oklch(98.46% 0.008 285); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.46% 0.008 285)</span></li>
-            <li style="background: oklch(96.93% 0.016 285); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.93% 0.016 285)</span></li>
-            <li style="background: oklch(95.4% 0.025 285); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.4% 0.025 285)</span></li>
-            <li style="background: oklch(93.86% 0.033 285); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(93.86% 0.033 285)</span></li>
-            <li style="background: oklch(92.32% 0.042 285); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(92.32% 0.042 285)</span></li>
-            <li style="background: oklch(90.78% 0.051 285); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(90.78% 0.051 285)</span></li>
-            <li style="background: oklch(89.23% 0.059 285); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(89.23% 0.059 285)</span></li>
-            <li style="background: oklch(87.67% 0.068 285); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(87.67% 0.068 285)</span></li>
-            <li style="background: oklch(86.1% 0.078 285); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(86.1% 0.078 285)</span></li>
-            <li style="background: oklch(84.52% 0.087 285); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(84.52% 0.087 285)</span></li>
-            <li style="background: oklch(82.94% 0.096 285); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(82.94% 0.096 285)</span></li>
-            <li style="background: oklch(81.34% 0.106 285); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(81.34% 0.106 285)</span></li>
-            <li style="background: oklch(79.72% 0.116 285); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(79.72% 0.116 285)</span></li>
-            <li style="background: oklch(78.09% 0.126 285); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(78.09% 0.126 285)</span></li>
-            <li style="background: oklch(76.45% 0.136 285); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(76.45% 0.136 285)</span></li>
-            <li style="background: oklch(74.78% 0.147 285); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(74.78% 0.147 285)</span></li>
-            <li style="background: oklch(73.1% 0.158 285); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(73.1% 0.158 285)</span></li>
-            <li style="background: oklch(71.39% 0.169 285); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(71.39% 0.169 285)</span></li>
-            <li style="background: oklch(69.65% 0.18 285); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(69.65% 0.18 285)</span></li>
-            <li style="background: oklch(67.89% 0.191 285); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(67.89% 0.191 285)</span></li>
-            <li style="background: oklch(65.98% 0.204 285); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(65.98% 0.204 285)</span></li>
-            <li style="background: oklch(64.03% 0.217 285); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(64.03% 0.217 285)</span></li>
-            <li style="background: oklch(62.04% 0.231 285); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(62.04% 0.231 285)</span></li>
-            <li style="background: oklch(60.01% 0.245 285); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(60.01% 0.245 285)</span></li>
-            <li style="background: oklch(57.94% 0.259 285); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(57.94% 0.259 285)</span></li>
-            <li style="background: oklch(55.81% 0.274 285); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(55.81% 0.274 285)</span></li>
-            <li style="background: oklch(53.62% 0.289 285); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(53.62% 0.289 285)</span></li>
-            <li style="background: oklch(51.37% 0.306 285); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(51.37% 0.306 285)</span></li>
-            <li style="background: oklch(49.04% 0.292 285); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(49.04% 0.292 285)</span></li>
-            <li style="background: oklch(46.62% 0.277 285); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(46.62% 0.277 285)</span></li>
-            <li style="background: oklch(44.1% 0.262 285); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(44.1% 0.262 285)</span></li>
-            <li style="background: oklch(41.45% 0.247 285); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(41.45% 0.247 285)</span></li>
-            <li style="background: oklch(38.66% 0.23 285); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(38.66% 0.23 285)</span></li>
-            <li style="background: oklch(35.68% 0.212 285); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(35.68% 0.212 285)</span></li>
-            <li style="background: oklch(32.47% 0.193 285); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(32.47% 0.193 285)</span></li>
-            <li style="background: oklch(28.95% 0.172 285); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(28.95% 0.172 285)</span></li>
-            <li style="background: oklch(24.99% 0.148 285); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.99% 0.148 285)</span></li>
-            <li style="background: oklch(20.33% 0.121 285); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.33% 0.121 285)</span></li>
-            <li style="background: oklch(14.32% 0.085 285); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.32% 0.085 285)</span></li>
+            <li style="background: oklch(98.36% 0.008 280); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.36% 0.008 280)</span></li>
+            <li style="background: oklch(96.72% 0.017 280); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.72% 0.017 280)</span></li>
+            <li style="background: oklch(95.08% 0.026 280); color: #000" class=color-75><span class=num>75</span><span class=code>oklch(95.08% 0.026 280)</span></li>
+            <li style="background: oklch(93.44% 0.035 280); color: #000" class=color-00><span class=num>100</span><span class=code>oklch(93.44% 0.035 280)</span></li>
+            <li style="background: oklch(91.8% 0.044 280); color: #000" class=color-25><span class=num>125</span><span class=code>oklch(91.8% 0.044 280)</span></li>
+            <li style="background: oklch(90.15% 0.053 280); color: #000" class=color-50><span class=num>150</span><span class=code>oklch(90.15% 0.053 280)</span></li>
+            <li style="background: oklch(88.49% 0.062 280); color: #000" class=color-75><span class=num>175</span><span class=code>oklch(88.49% 0.062 280)</span></li>
+            <li style="background: oklch(86.82% 0.072 280); color: #000" class=color-00><span class=num>200</span><span class=code>oklch(86.82% 0.072 280)</span></li>
+            <li style="background: oklch(85.15% 0.081 280); color: #000" class=color-25><span class=num>225</span><span class=code>oklch(85.15% 0.081 280)</span></li>
+            <li style="background: oklch(83.47% 0.091 280); color: #000" class=color-50><span class=num>250</span><span class=code>oklch(83.47% 0.091 280)</span></li>
+            <li style="background: oklch(81.78% 0.101 280); color: #000" class=color-75><span class=num>275</span><span class=code>oklch(81.78% 0.101 280)</span></li>
+            <li style="background: oklch(80.07% 0.111 280); color: #000" class=color-00><span class=num>300</span><span class=code>oklch(80.07% 0.111 280)</span></li>
+            <li style="background: oklch(78.35% 0.121 280); color: #000" class=color-25><span class=num>325</span><span class=code>oklch(78.35% 0.121 280)</span></li>
+            <li style="background: oklch(76.62% 0.132 280); color: #000" class=color-50><span class=num>350</span><span class=code>oklch(76.62% 0.132 280)</span></li>
+            <li style="background: oklch(74.86% 0.143 280); color: #000" class=color-75><span class=num>375</span><span class=code>oklch(74.86% 0.143 280)</span></li>
+            <li style="background: oklch(73.09% 0.154 280); color: #000" class=color-00><span class=num>400</span><span class=code>oklch(73.09% 0.154 280)</span></li>
+            <li style="background: oklch(71.3% 0.165 280); color: #000" class=color-25><span class=num>425</span><span class=code>oklch(71.3% 0.165 280)</span></li>
+            <li style="background: oklch(69.49% 0.177 280); color: #000" class=color-50><span class=num>450</span><span class=code>oklch(69.49% 0.177 280)</span></li>
+            <li style="background: oklch(67.65% 0.188 280); color: #000" class=color-75><span class=num>475</span><span class=code>oklch(67.65% 0.188 280)</span></li>
+            <li style="background: oklch(65.78% 0.2 280); color: #fff" class=color-00><span class=num>500</span><span class=code>oklch(65.78% 0.2 280)</span></li>
+            <li style="background: oklch(63.97% 0.212 280); color: #fff" class=color-25><span class=num>525</span><span class=code>oklch(63.97% 0.212 280)</span></li>
+            <li style="background: oklch(62.13% 0.224 280); color: #fff" class=color-50><span class=num>550</span><span class=code>oklch(62.13% 0.224 280)</span></li>
+            <li style="background: oklch(60.25% 0.237 280); color: #fff" class=color-75><span class=num>575</span><span class=code>oklch(60.25% 0.237 280)</span></li>
+            <li style="background: oklch(58.32% 0.25 280); color: #fff" class=color-00><span class=num>600</span><span class=code>oklch(58.32% 0.25 280)</span></li>
+            <li style="background: oklch(56.35% 0.263 280); color: #fff" class=color-25><span class=num>625</span><span class=code>oklch(56.35% 0.263 280)</span></li>
+            <li style="background: oklch(54.33% 0.277 280); color: #fff" class=color-50><span class=num>650</span><span class=code>oklch(54.33% 0.277 280)</span></li>
+            <li style="background: oklch(52.25% 0.292 280); color: #fff" class=color-75><span class=num>675</span><span class=code>oklch(52.25% 0.292 280)</span></li>
+            <li style="background: oklch(50.1% 0.307 280); color: #fff" class=color-00><span class=num>700</span><span class=code>oklch(50.1% 0.307 280)</span></li>
+            <li style="background: oklch(47.88% 0.293 280); color: #fff" class=color-25><span class=num>725</span><span class=code>oklch(47.88% 0.293 280)</span></li>
+            <li style="background: oklch(45.57% 0.279 280); color: #fff" class=color-50><span class=num>750</span><span class=code>oklch(45.57% 0.279 280)</span></li>
+            <li style="background: oklch(43.15% 0.264 280); color: #fff" class=color-75><span class=num>775</span><span class=code>oklch(43.15% 0.264 280)</span></li>
+            <li style="background: oklch(40.61% 0.249 280); color: #fff" class=color-00><span class=num>800</span><span class=code>oklch(40.61% 0.249 280)</span></li>
+            <li style="background: oklch(37.92% 0.232 280); color: #fff" class=color-25><span class=num>825</span><span class=code>oklch(37.92% 0.232 280)</span></li>
+            <li style="background: oklch(35.05% 0.215 280); color: #fff" class=color-50><span class=num>850</span><span class=code>oklch(35.05% 0.215 280)</span></li>
+            <li style="background: oklch(31.95% 0.196 280); color: #fff" class=color-75><span class=num>875</span><span class=code>oklch(31.95% 0.196 280)</span></li>
+            <li style="background: oklch(28.53% 0.175 280); color: #fff" class=color-00><span class=num>900</span><span class=code>oklch(28.53% 0.175 280)</span></li>
+            <li style="background: oklch(24.68% 0.151 280); color: #fff" class=color-25><span class=num>925</span><span class=code>oklch(24.68% 0.151 280)</span></li>
+            <li style="background: oklch(20.12% 0.123 280); color: #fff" class=color-50><span class=num>950</span><span class=code>oklch(20.12% 0.123 280)</span></li>
+            <li style="background: oklch(14.22% 0.087 280); color: #fff" class=color-75><span class=num>975</span><span class=code>oklch(14.22% 0.087 280)</span></li>
           </ul>
         </li>
         <li>
-          <div class=color-label>Purple</div>
+          <h3>Purple</h3>
           <ul>
             <li style="background: oklch(98.46% 0.01 310); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.46% 0.01 310)</span></li>
             <li style="background: oklch(96.92% 0.021 310); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.92% 0.021 310)</span></li>
@@ -493,7 +502,7 @@
           </ul>
         </li>
         <li>
-          <div class=color-label>Gray</div>
+          <h3>Gray</h3>
           <ul>
             <li style="background: oklch(98.4% 0 0); color: #000" class=color-25><span class=num>25</span><span class=code>oklch(98.4% 0 0)</span></li>
             <li style="background: oklch(96.81% 0 0); color: #000" class=color-50><span class=num>50</span><span class=code>oklch(96.81% 0 0)</span></li>

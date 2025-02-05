@@ -14,7 +14,6 @@ const Logo = ({ colors }: { colors: Colors }) => (
     <div style={`background: ${oklch(colors.blue[600])}`} />
     <div style={`background: ${oklch(colors.indigo[700])}`} />
     <div style={`background: ${oklch(colors.purple[600])}`} />
-    {/* <div style={`background: ${oklch(colors.pink[500])}`} /> */}
     <div style={`background: ${oklch(colors.gray[500])}`} />
   </div>
 );
@@ -32,7 +31,7 @@ export const page = (colors: Colors) =>
         <Styles />
       </head>
       <body>
-        <header>
+        <header style={`background:${oklch(colors.gray[50])}`}>
           <hgroup>
             <Logo colors={colors} />
             <h1>Hyperchromatic</h1>
@@ -40,35 +39,18 @@ export const page = (colors: Colors) =>
           </hgroup>
         </header>
         <main>
+          <h2>An open source P3/OKLCH color palette</h2>
           <p>
-            Hyperchromatic is an open source palette using colors in the P3
-            gamut via OKLCH.
+            Hex and rgb colors on the web are limited to the sRGB range of
+            colors supported by older displays. Hyperchromatic is an open source
+            palette using{' '}
+            <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch'>
+              OKLCH
+            </a>{' '}
+            for colors in the wider P3 range that modern displays support.
           </p>
-          <div class='flex-p'>
-            <div>
-              <h2>What's the P3 gamut?</h2>
-              <p>
-                A "gamut" is a range of colors that a display can show, and P3
-                is a gamut supported by many modern displays, while older
-                displays only support the smaller sRGB space.
-              </p>
-            </div>
-            <div>
-              <h2>What's OKLCH?</h2>
-              <p>
-                OKLCH can be used in CSS to specify colors using lightness,
-                chroma, and hue. These colors might fall in sRGB, P3, or even
-                wider spaces. Colors defined in CSS using hex or rgb are limited
-                to the sRGB space.
-              </p>
-            </div>
-          </div>
 
           <ColorList colors={colors} />
-          {/* <h2>How will these colors look on displays that don't support P3?</h2>
-          <input id='show-fallbacks' type='checkbox' />
-          <label for='show-fallbacks'>Show sRGB fallbacks</label>
-          <h2>The math</h2> */}
         </main>
         <footer>
           Created by <a href='https://github.com/jrood'>John Rood</a>

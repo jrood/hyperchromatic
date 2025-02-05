@@ -1,47 +1,70 @@
 body {
   margin: 0;
   font-family: Figtree;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 header {
   display: flex;
   align-items: center;
-  height: 256px;
   justify-content: center;
-  padding-right: 4px;
+  height: 192px;
+  width: 100%;
+}
+@media (min-width: 384px) {
+  header {
+    height: 224px;
+  }
+}
+@media (min-width: 512px) {
+  header {
+    height: 256px;
+  }
 }
 
 main {
-  max-width: 768px;
+  max-width: 1024px;
+  margin: 0 auto;
   padding: 16px;
-  position: relative;
-  overflow: visible;
-}
-
-hgroup * {
-  margin: 0;
 }
 
 h1 {
-  font-size: min(56px, 12.5vw);
-  line-height: calc(1em + 12px);
+  font-size: 40px;
   font-weight: 600;
   margin-left: -3px;
   margin-top: -4px;
+  margin-bottom: 0;
+}
+@media (min-width: 384px) {
+  h1 {
+    font-size: 48px;
+  }
+}
+@media (min-width: 512px) {
+  h1 {
+    font-size: 56px;
+  }
+}
+
+hgroup p {
+  text-align: right;
+  margin-top: -8px;
+  margin-bottom: 0;
+}
+@media (min-width: 384px) {
+  hgroup p {
+    margin-top: -10px;
+  }
+}
+@media (min-width: 512px) {
+  hgroup p {
+    margin-top: -12px;
+  }
 }
 
 h2 {
   font-size: 18px;
   font-weight: 600;
   margin-top: 28px;
-}
-
-hgroup p {
-  text-align: center;
-  margin-top: -12px;
 }
 
 ul {
@@ -56,25 +79,31 @@ main > ul {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 512px) {
   main > ul {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 768px) {
   main > ul {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-li > ul {
-  display: flex;
-  flex-direction: column;
+@media (min-width: 1024px) {
+  main > ul {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 li {
   list-style: none;
+}
+
+li > ul {
+  display: flex;
+  flex-direction: column;
 }
 
 li > ul > li {
@@ -84,7 +113,8 @@ li > ul > li {
   justify-content: space-between;
 }
 
-.color-label {
+h3 {
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 4px;
 }
@@ -96,16 +126,11 @@ li > ul > li {
 select {
   font-family: inherit;
   font-size: inherit;
+  border-radius: 16px;
+  padding: 0 6px;
   height: 32px;
-  margin: 0 0 0 4px;
-  margin-right: 16px;
-}
-
-input[type='checkbox'] {
-  width: 20px;
-  height: 20px;
-  margin: 0 0 0 4px;
-  transform: translateY(4px);
+  margin-left: 4px;
+  margin-top: -8px;
 }
 
 ul li.color-25,
@@ -123,7 +148,6 @@ ul li.color-75 {
 }
 
 .code {
-  min-width: 168px;
   text-align: right;
 }
 
@@ -134,20 +158,6 @@ footer {
 
 a {
   color: #000;
-}
-
-.flex-p {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-@media (min-width: 512px) {
-  .flex-p {
-    gap: 16px;
-  }
-  .flex-p > * {
-    width: calc(50% - 8px);
-  }
 }
 
 .logo {

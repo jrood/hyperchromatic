@@ -8,7 +8,8 @@ const capitalize = (k: string) => k[0].toUpperCase() + k.slice(1);
 
 export const ColorList = ({ colors }: { colors: Colors }) => (
   <>
-    <label for='inc-by'>Increment by</label>
+    <h2>Colors</h2>
+    <label for='inc-by'>Precision</label>
     <select id='inc-by'>
       <option value='100' selected>
         100
@@ -19,7 +20,7 @@ export const ColorList = ({ colors }: { colors: Colors }) => (
     <ul>
       {Object.keys(colors).map(k => (
         <li>
-          <div class='color-label'>{capitalize(k)}</div>
+          <h3>{capitalize(k)}</h3>
           <ul>
             {Object.entries(
               (colors as Record<string, typeof colors.red>)[k],
