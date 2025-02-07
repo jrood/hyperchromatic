@@ -6,15 +6,13 @@ import { Logo } from './Logo.tsx';
 import { cssVars } from './cssVars.tsx';
 import { description } from './description.ts';
 
-
-
 export const page = (colors: Colors) =>
   '<!doctype html>' +
   (
     <html lang='en'>
       <head>
         <title>Hyperchromatic</title>
-        <meta name="description" content={description} />
+        <meta name='description' content={description} />
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='data:' />
@@ -30,7 +28,13 @@ export const page = (colors: Colors) =>
           </hgroup>
         </header>
         <main>
-          <h2>An open source P3/OKLCH color palette</h2>
+          <h2>
+            An{' '}
+            <a href='https://github.com/jrood/hyperchromatic'>
+              open source
+            </a>{' '}
+            P3/OKLCH color palette
+          </h2>
           <p>
             Hex and rgb colors on the web are limited to the sRGB range of
             colors supported by older displays. Hyperchromatic is an open source
