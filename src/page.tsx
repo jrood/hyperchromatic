@@ -2,21 +2,11 @@ import { Colors } from './types.ts';
 import { ColorList } from './ColorList.tsx';
 import { Styles } from './styles/Styles.tsx';
 import { oklch } from './oklch.ts';
+import { Logo } from './Logo.tsx';
+import { cssVars } from './cssVars.tsx';
+import { description } from './description.ts';
 
-export const description = 'vibrant colors for the web';
 
-const Logo = ({ colors }: { colors: Colors }) => (
-  <div class='logo'>
-    <div style={`background: ${oklch(colors.red[500])}`} />
-    <div style={`background: ${oklch(colors.orange[400])}`} />
-    <div style={`background: ${oklch(colors.yellow[300])}`} />
-    <div style={`background: ${oklch(colors.green[500])}`} />
-    <div style={`background: ${oklch(colors.blue[600])}`} />
-    <div style={`background: ${oklch(colors.indigo[700])}`} />
-    <div style={`background: ${oklch(colors.purple[600])}`} />
-    <div style={`background: ${oklch(colors.gray[500])}`} />
-  </div>
-);
 
 export const page = (colors: Colors) =>
   '<!doctype html>' +
@@ -24,10 +14,11 @@ export const page = (colors: Colors) =>
     <html lang='en'>
       <head>
         <title>Hyperchromatic</title>
-        <meta name={description} content={description} />
+        <meta name="description" content={description} />
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='data:' />
+        <style>{cssVars(colors)}</style>
         <Styles />
       </head>
       <body>

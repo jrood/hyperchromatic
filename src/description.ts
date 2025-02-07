@@ -1,0 +1,1 @@
+export const description = 'vibrant colors for the web';

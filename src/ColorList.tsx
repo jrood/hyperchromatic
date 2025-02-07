@@ -1,10 +1,9 @@
 import { TrustedHTML } from 'https://jsr.io/@mary/jsx/0.1.0/lib/types.ts';
 import { oklch } from './oklch.ts';
 import { Colors } from './types.ts';
+import { capitalize } from './capitalize.ts';
 
 const fg = (n: number) => (n < 500 ? '#000' : '#fff');
-
-const capitalize = (k: string) => k[0].toUpperCase() + k.slice(1);
 
 export const ColorList = ({ colors }: { colors: Colors }) => (
   <>
@@ -18,15 +17,15 @@ export const ColorList = ({ colors }: { colors: Colors }) => (
       <option value='25'>25</option>
     </select>
     <ul>
-      {Object.keys(colors).map(k => (
+      {Object.keys(colors).map(h => (
         <li>
-          <h3>{capitalize(k)}</h3>
+          <h3>{capitalize(h)}</h3>
           <ul>
             {Object.entries(
-              (colors as Record<string, typeof colors.red>)[k],
+              (colors as Record<string, typeof colors.red>)[h],
             ).map(([num, color]) => (
               <li
-                style={`background:${oklch(color)};color:${fg(+num)}`}
+                style={`background:var(--${h}-${num});color:${fg(+num)}`}
                 class={`color-${num.slice(-2)}`}
               >
                 <span class='num'>{num}</span>
