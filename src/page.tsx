@@ -29,10 +29,7 @@ export const page = (colors: Colors) =>
         </header>
         <main>
           <h2>
-            An{' '}
-            <a href='https://github.com/jrood/hyperchromatic'>
-              open source
-            </a>{' '}
+            An <a href='https://github.com/jrood/hyperchromatic'>open source</a>{' '}
             P3/OKLCH color palette
           </h2>
           <p>
@@ -43,6 +40,14 @@ export const page = (colors: Colors) =>
               OKLCH
             </a>{' '}
             for colors in the wider P3 range that modern displays support.
+          </p>
+          <h2>The best of brightness, contrast, and utility</h2>
+          <p>
+            The curve used to calculate each shade seeks to maximize both
+            contrast between light shades and midrange brightness by using an
+            inverse sine shape that is curved for dark shades and more linear
+            for light shades. Each curve is adjusted so that the most vibrant
+            part of the curve aligns with the nearest 100-precision shade.
           </p>
 
           <ColorList colors={colors} />
