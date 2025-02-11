@@ -26,7 +26,7 @@ export const ColorList = ({ colors }: { colors: Colors }) => (
             ).map(([num, color]) => (
               <li
                 style={`background:var(--${h}-${num});color:${fg(+num)}`}
-                class={`color-${num.slice(-2)}`}
+                class={`color-${num.slice(-2)}${(colors[h][+num - 25]?.c < color.c && colors[h][+num + 25]?.c < color.c) ? ' peak' : ''}`}
               >
                 <span class='num'>{num}</span>
                 <span class='code'>{oklch(color)}</span>
