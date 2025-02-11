@@ -22,6 +22,8 @@ function getL(x: number, adj: number) {
 
 const trunc = (n: number, p: number) => floor(n * p) / p;
 
+const greenAdjust = 3 / 4;
+
 export function createColors() {
   const colors: Colors = {};
 
@@ -35,9 +37,12 @@ export function createColors() {
       precision: 1,
       fn: (n: number) => maxC(n, h),
     });
-    const target = 1000 - Math.round(targetL / 10 - 1.75) * 100;
+    let target = 1000 - Math.round(targetL / 10 - 1.75) * 100;
+    if (k === 'green') {
+      target = target * greenAdjust;
+    }
 
-    const adj = k === 'green' ? 0 : findPeak({
+    const adj = findPeak({
       low: -1,
       high: 1,
       precision: .0001,
@@ -49,7 +54,7 @@ export function createColors() {
       const l = getL(x, adj);
       let c = maxC(l, h);
       if (k === 'green') {
-        c = min(c, x ** 1.5);
+        c = min(c, x * greenAdjust);
       }
       colors[k][i] = { l: trunc(l, 100), c: trunc(c, 1000), h };
     }
