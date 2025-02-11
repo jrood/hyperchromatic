@@ -22,7 +22,7 @@ function getL(x: number, adj: number) {
 
 const trunc = (n: number, p: number) => floor(n * p) / p;
 
-const greenAdjust = 3 / 4;
+const greenAdjust = 13 / 16;
 
 export function createColors() {
   const colors: Colors = {};
