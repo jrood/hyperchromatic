@@ -35,7 +35,7 @@ export function createColors() {
       precision: 1,
       fn: (n: number) => maxC(n, h),
     });
-    const target = 1000 - Math.round(targetL / 10 - 1.5) * 100;
+    const target = 1000 - Math.round(targetL / 10 - 1.75) * 100;
 
     const adj = k === 'green' ? 0 : findPeak({
       low: -1,
