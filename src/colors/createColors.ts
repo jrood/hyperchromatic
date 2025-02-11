@@ -61,7 +61,7 @@ export function createColors() {
   colors.gray = {};
   for (let i = 25; i < 1000; i += 25) {
     const x = i / 1000;
-    const l = getL(x, 0);
+    const l = getL(x, 1/16);
     colors.gray[i] = { l: trunc(l, 100), c: 0, h: 0 };
   }
   return colors;
