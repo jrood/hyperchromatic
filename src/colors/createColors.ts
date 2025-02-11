@@ -1,13 +1,13 @@
 import { Colors } from '../types.ts';
-import { hues, targets } from './hues.ts';
-import { binarySearchMax, peakSearchMax } from './search.ts';
+import { hues } from './hues.ts';
+import { findMax, findPeak } from './binarySearch.ts';
 import { inGamut } from 'npm:culori';
 const { floor, asin, sin, min, PI } = Math;
 
 const inP3 = inGamut('p3');
 
-const getMaxC = (l: number, h: number) =>
-  binarySearchMax({
+const maxC = (l: number, h: number) =>
+  findMax({
     low: 0,
     high: 0.4,
     precision: 0.00001,
@@ -20,7 +20,7 @@ function getL(x: number, adj: number) {
   return (a + b) * 100;
 }
 
-const _floor = (n: number, p: number) => floor(n * p) / p;
+const trunc = (n: number, p: number) => floor(n * p) / p;
 
 export function createColors() {
   const colors: Colors = {};
@@ -29,21 +29,29 @@ export function createColors() {
     const h = hues[k];
     colors[k] = {};
 
-    const adj = k === 'green' ? 0 : peakSearchMax({
+    const targetL = findPeak({
+      low: 0,
+      high: 100,
+      precision: 1,
+      fn: (n: number) => maxC(n, h),
+    });
+    const target = 1000 - Math.round(targetL / 10 - 1.5) * 100;
+
+    const adj = k === 'green' ? 0 : findPeak({
       low: -1,
       high: 1,
-      precisions: [0.01, .0001],
-      fn: (adj: number) => getMaxC(getL(targets[k] / 1000, adj), h),
+      precision: .0001,
+      fn: (adj: number) => maxC(getL(target / 1000, adj), h),
     });
 
     for (let i = 25; i < 1000; i += 25) {
       const x = i / 1000;
       const l = getL(x, adj);
-      let c = getMaxC(l, h);
+      let c = maxC(l, h);
       if (k === 'green') {
         c = min(c, x ** 1.5);
       }
-      colors[k][i] = { l: _floor(l, 100), c: _floor(c, 1000), h };
+      colors[k][i] = { l: trunc(l, 100), c: trunc(c, 1000), h };
     }
   }
 
@@ -51,7 +59,7 @@ export function createColors() {
   for (let i = 25; i < 1000; i += 25) {
     const x = i / 1000;
     const l = getL(x, 0);
-    colors.gray[i] = { l: _floor(l, 100), c: 0, h: 0 };
+    colors.gray[i] = { l: trunc(l, 100), c: 0, h: 0 };
   }
   return colors;
 }
